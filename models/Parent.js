@@ -8,7 +8,7 @@ const parentSchema = new mongoose.Schema({
     type: String,
   },
   mobileNo:{
-      type:Number
+      type:String
   },
   password: {
     type: String,

@@ -9,14 +9,14 @@ const studentSchema = new mongoose.Schema({
     required:true
   },
   age:{
-      type:Number
+      type:String
   },
   password: {
     type: String,
     required:true,
   },
   standard:{
-      type:Number
+      type:String
   },
   parent:{
       type:mongoose.Schema.Types.ObjectId,
