@@ -1,3 +1,12 @@
 module.exports.Student=require('./Student');
 module.exports.Parent=require('./Parent');
 module.exports.Teacher=require('./Teacher')
+module.exports.Subject=require('./Subject')
+module.exports.Material=require('./Material')
+module.exports.Post=require('./Post')
+module.exports.DiscussionForum=require('./DiscussionForum')
+module.exports.SubjectNotice=require('./SubjectNotice')
+module.exports.CommonNotice=require('./CommonNotice')
+module.exports.DiscussionQuestion=require('./DiscussionQuestion')
+module.exports.DiscussionAnswer=require('./DiscussionAnswer')
+module.exports.Standard=require('./Standard')

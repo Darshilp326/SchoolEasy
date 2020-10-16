@@ -59,6 +59,7 @@ const loginTeacher = function (req, res, next) {
           }
           if (result) {
             const token = createJwtToken({ id: user.id });
+            console.log(user.id)
             res.status(200).json({ token });
           } else {
             res.status(401).json({ message: "Authentication failed" });
