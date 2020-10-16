@@ -16,7 +16,11 @@ const standardSchema=new mongoose.Schema({
   subjects:[{
       type:mongoose.Schema.Types.ObjectId,
       ref:'Subject'
-  }]
+  }],
+  discussionForum:{
+ type:mongoose.Schema.Types.ObjectId,
+ ref:'DiscussionForum'
+  }
 })
 
 module.exports=mongoose.model('Standard',standardSchema)
