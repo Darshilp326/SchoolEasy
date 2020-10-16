@@ -1,6 +1,6 @@
 const bcrypt=require('bcryptjs')
 const moment=require('moment')
-const {Teacher}=require('../models/index') 
+const {Teacher,Standard}=require('../models/index') 
 const jwt=require('jwt-simple')
 const keys = require("../config/keys");
 const JWT_KEY=keys.JWT.jwt_token
@@ -16,7 +16,8 @@ function createJwtToken(user) {
 
 const registerTeacher=async(req,res)=>{
     try {
-        const { name, email, password,mobileNo} = req.body;
+        const { name, email, password,mobileNo,standard} = req.body;
+        const std=await Standard.findOne({number:standard})
         const user = await Teacher.findOne({
           email,
         });
@@ -29,6 +30,8 @@ const registerTeacher=async(req,res)=>{
           password,
           mobileNo
         });
+        std.teachers.push(teacher.id)
+        await std.save();
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(teacher.password, salt, (err, hash) => {
             if (err) throw err;

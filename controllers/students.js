@@ -1,6 +1,6 @@
 const bcrypt=require('bcryptjs')
 const moment=require('moment')
-const {Student}=require('../models/index') 
+const {Student,Standard}=require('../models/index') 
 const jwt=require('jwt-simple')
 const keys = require("../config/keys");
 const JWT_KEY=keys.JWT.jwt_token
@@ -20,6 +20,7 @@ const registerStudent=async(req,res)=>{
         const user = await Student.findOne({
           email,
         });
+        const std=await Standard.findOne({number:standard})
         if (user) {
           return res.status(400).json({ msg: "Email is already registered" });
         }
@@ -30,6 +31,8 @@ const registerStudent=async(req,res)=>{
           age,
           standard
         });
+        std.students.push(student.id)
+        await std.save()
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(student.password, salt, (err, hash) => {
             if (err) throw err;
