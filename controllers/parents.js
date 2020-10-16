@@ -1,6 +1,6 @@
 const bcrypt=require('bcryptjs')
 const moment=require('moment')
-const {Student}=require('../models/index') 
+const {Parent}=require('../models/index') 
 const jwt=require('jwt-simple')
 const keys = require("../config/keys");
 const JWT_KEY=keys.JWT.jwt_token
@@ -13,28 +13,26 @@ function createJwtToken(user) {
     };
     return jwt.encode(payload, JWT_KEY);
 }
-
-const registerStudent=async(req,res)=>{
+const registerParent=async(req,res)=>{
     try {
-        const { name, email, password,age,standard} = req.body;
-        const user = await Student.findOne({
+        const { name, email, password,mobileNo} = req.body;
+        const user = await Parent.findOne({
           email,
         });
         if (user) {
           return res.status(400).json({ msg: "Email is already registered" });
         }
-        const student = new Student({
+        const parent = new Parent({
           name,
           email,
           password,
-          age,
-          standard
+          mobileNo,
         });
         bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(student.password, salt, (err, hash) => {
+          bcrypt.hash(parent.password, salt, (err, hash) => {
             if (err) throw err;
-            student.password = hash;
-            student
+            parent.password = hash;
+            parent
               .save()
               .then((user) => {
                 res.send(user);
@@ -48,8 +46,8 @@ const registerStudent=async(req,res)=>{
       }
 }
 
-const loginStudent = function (req, res, next) {
-    Student.findOne({ email: req.body.email })
+const loginParent = function (req, res, next) {
+    Parent.findOne({ email: req.body.email })
       .then(function (user) {
         if (user.length < 1) {
           res.status(401).json({ message: "Authentication failed" });
@@ -69,6 +67,6 @@ const loginStudent = function (req, res, next) {
       .catch((err) => console.log(err));
   };
 module.exports={
-    registerStudent,
-    loginStudent
+    registerParent,
+    loginParent
 }

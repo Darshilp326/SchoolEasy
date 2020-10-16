@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const parentSchema = new mongoose.Schema({
+const teacherSchema = new mongoose.Schema({
   name: {
     type: String,
   },
@@ -13,10 +13,14 @@ const parentSchema = new mongoose.Schema({
   password: {
     type: String,
   },
-  student:{
+  standard:{
       type:mongoose.Schema.Types.ObjectId,
-      ref:"Student"
+      ref:"Standard"
+  },
+  subject:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Subject"
   }
 });
 
-module.exports = mongoose.model("Parent", parentSchema);
+module.exports = mongoose.model("Teacher", teacherSchema);
