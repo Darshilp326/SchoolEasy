@@ -1,6 +1,6 @@
 const bcrypt=require('bcryptjs')
 const moment=require('moment')
-const {Parent}=require('../models/index') 
+const {Parent,User}=require('../models/index') 
 const jwt=require('jwt-simple')
 const keys = require("../config/keys");
 const JWT_KEY=keys.JWT.jwt_token
@@ -28,6 +28,11 @@ const registerParent=async(req,res)=>{
           password,
           mobileNo,
         });
+        const newUser=new User({
+          name,
+          userId:parent.id
+        })
+        await newUser.save()
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(parent.password, salt, (err, hash) => {
             if (err) throw err;
