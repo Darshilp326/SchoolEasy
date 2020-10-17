@@ -19,7 +19,7 @@ mongoose
 //set mongoose's Promise equal to global Promise since mongoose's Promise version is depricated
 mongoose.Promise = global.Promise;
 //set up static files
-app.use(express.static("public"));
+app.use('/public/materials', express.static(__dirname + '/public/materials'));
 
 // use body-parser middleware
 app.use(bodyParser.json());
