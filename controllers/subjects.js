@@ -1,4 +1,5 @@
-const {Subject,Standard}=require('../models')
+const {Subject,Standard}=require('../models');
+const Teacher = require('../models/Teacher');
 
 const addSubject=async(req,res)=>{
  try{
@@ -9,6 +10,9 @@ const addSubject=async(req,res)=>{
     })
     await subject.save();
     const std=await Standard.findById(req.body.standard);
+    const teacher=await Teacher.findById(req.body.teacher)
+    teacher.subject=subject.id
+    await teacher.save()
     std.subjects.push(subject.id)
     await std.save()
     res.status(200).json({data:subject})
@@ -17,11 +21,10 @@ const addSubject=async(req,res)=>{
   res.status(500).json({message:'Internal Server error'})
  }  
 }
-
 const getAllSubjects=async(req,res)=>{
     try{
     const {standard}=req.params
-    const subjects=await Subject.find({standard})
+    const subjects=await Subject.find({standard}).populate({path:'teacher',path:'standard'})
     res.status(200).json({subjects})
     }
     catch(e){

@@ -14,7 +14,7 @@ const discussionAnswerSchema=new mongoose.Schema({
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'DiscussionAnswer'  
+        ref:'User'  
     }
 })
 module.exports=mongoose.model('DiscussionAnswer',discussionAnswerSchema)

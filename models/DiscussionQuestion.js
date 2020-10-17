@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const discussionQuestionSchema=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Student'
+        ref:'User'
     },
     discussionForum:{
         type:mongoose.Schema.Types.ObjectId,

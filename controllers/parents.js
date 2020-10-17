@@ -1,6 +1,6 @@
 const bcrypt=require('bcryptjs')
 const moment=require('moment')
-const {Parent,User}=require('../models/index') 
+const {Parent,User,Student}=require('../models/index') 
 const jwt=require('jwt-simple')
 const keys = require("../config/keys");
 const JWT_KEY=keys.JWT.jwt_token
@@ -15,7 +15,13 @@ function createJwtToken(user) {
 }
 const registerParent=async(req,res)=>{
     try {
-        const { name, email, password,mobileNo} = req.body;
+        const { name, email, password,mobileNo,studentEmail} = req.body;
+        const student=await Student.findOne({
+          email:studentEmail
+        })
+        if(!student){
+          return res.status(400).json({ msg: "Student is not registered"});
+        }
         const user = await Parent.findOne({
           email,
         });
@@ -27,6 +33,7 @@ const registerParent=async(req,res)=>{
           email,
           password,
           mobileNo,
+          student:student.id
         });
         const newUser=new User({
           name,

@@ -17,6 +17,7 @@ function createJwtToken(user) {
 const registerStudent=async(req,res)=>{
     try {
         const { name, email, password,age,standard} = req.body;
+        console.log(email)
         const user = await Student.findOne({
           email,
         });
@@ -24,6 +25,7 @@ const registerStudent=async(req,res)=>{
         if (user) {
           return res.status(400).json({ msg: "Email is already registered" });
         }
+        console.log(std)
         const student = new Student({
           name,
           email,
@@ -31,11 +33,13 @@ const registerStudent=async(req,res)=>{
           age,
           standard
         });
-        const user=new User({
+        console.log(student)
+        const newUser=new User({
           name,
-          userId:student.id
+          userId:student._id
         })
-        await user.save()
+        await newUser.save()
+        console.log(newUser)
         std.students.push(student.id)
         await std.save()
         bcrypt.genSalt(10, (err, salt) => {
@@ -45,6 +49,7 @@ const registerStudent=async(req,res)=>{
             student
               .save()
               .then((user) => {
+                console.log(user)
                 res.send(user);
               })
               .catch((err) => console.log(err));
