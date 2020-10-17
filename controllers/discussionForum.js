@@ -11,7 +11,7 @@ const addDiscussionForum=async(req,res)=>{
         const std=await Standard.findById(req.body.standard)
         std.discussionForum=discussionForum.id
         await std.save()
-        res.status(200).json({discussionForum})
+        res.status(200).json({discussionForum,std})
     }catch(e){
         console.log(e.message)
         res.status(500).json({message:'Internal server error'})

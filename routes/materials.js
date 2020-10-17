@@ -21,12 +21,12 @@ const upload = multer({
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png' || file.mimetype==='application/pdf') {
             cb(null, true);
         } else {
-            cb(new Error('Please upload images with extension .jpeg/.jpg/.png with file size < 10mb'), false);
+            cb(new Error('Please upload images with extension .jpeg/.jpg/.png/pdf with file size < 10mb'), false);
         }
     }
 });
 
 router.route('/:subjectId/add').post(upload.single('materials'),authController.ensureAuthenticated,materialController.addMaterial);
-//router.route('/:standard/all').get(subjectController.getAllSubjects)
+router.route('/:subjectId/get').get(materialController.getMaterialsOfSpecificSubject)
 
 module.exports=router;

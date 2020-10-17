@@ -8,6 +8,7 @@ const discussionForumSchema=new mongoose.Schema({
     questions:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'DiscussionQuestion'
-    }]
+    }],
+    
 })
 module.exports=mongoose.model('DiscussionForum',discussionForumSchema)
