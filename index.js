@@ -20,6 +20,7 @@ mongoose
 mongoose.Promise = global.Promise;
 //set up static files
 app.use('/public/materials', express.static(__dirname + '/public/materials'));
+app.use('/public/posts', express.static(__dirname + '/public/posts'));
 
 // use body-parser middleware
 app.use(bodyParser.json());

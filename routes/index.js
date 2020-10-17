@@ -7,6 +7,7 @@ const standardRoute=require('./standards')
 const subjectRoute=require('./subjects')
 const discussionForumRoute=require('./discussionForum')
 const materialRoute=require('./materials')
+const postRoute=require('./post')
 
 router.use("/students",studentRoute);
 router.use("/parents",parentRoute)
@@ -15,5 +16,6 @@ router.use('/standards',standardRoute)
 router.use('/subjects',subjectRoute)
 router.use('/discussions',discussionForumRoute)
 router.use('/materials',materialRoute)
+router.use('/posts',postRoute)
 
 module.exports=router
