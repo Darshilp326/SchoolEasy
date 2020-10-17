@@ -3,7 +3,11 @@ const mongoose=require('mongoose')
 const postSchema=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Standard'
+        ref:'User'
+    },
+    standard:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Standard' 
     },
     file:{
      type:String
