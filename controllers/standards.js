@@ -18,7 +18,7 @@ const getStandard=async(req,res)=>{
      if(!id){
         res.status(400).json({message:'Standard not found'})
     }
-     const standard=await Standard.findById(id)
+     const standard=await Standard.findOne({number:id})
      res.status(200).json({standard})
     }catch(e){
         console.log(e.message)
@@ -32,7 +32,7 @@ const getStudentsOfStandard=async(req,res)=>{
     if(!id){
         res.status(400).json({message:'Standard not found'})
     }
-    const standard=await Standard.findById(id).populate('students')
+    const standard=await Standard.findOne({number:id}).populate('students')
     res.status(200).json({standard})
     }catch(e){
         console.log(e.message)
@@ -45,7 +45,7 @@ const getTeachersOfStandard=async(req,res)=>{
         if(!id){
             res.status(400).json({message:'Standard not found'})
         }
-        const standard=await Standard.findById(id).populate('teachers')
+        const standard=await Standard.findOne({number:id}).populate('teachers')
         res.status(200).json({standard})
     }catch(e){
         console.log(e.message)

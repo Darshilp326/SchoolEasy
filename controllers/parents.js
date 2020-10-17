@@ -59,7 +59,7 @@ const registerParent=async(req,res)=>{
 }
 
 const loginParent = function (req, res, next) {
-    Parent.findOne({ email: req.body.email })
+    Parent.findOne({ email: req.body.email }).populate({path:'student'})
       .then(function (user) {
         if (user.length < 1) {
           res.status(401).json({ message: "Authentication failed" });
@@ -70,7 +70,7 @@ const loginParent = function (req, res, next) {
           }
           if (result) {
             const token = createJwtToken({ id: user.id });
-            res.status(200).json({ token });
+            res.status(200).json({ token,user });
           } else {
             res.status(401).json({ message: "Authentication failed" });
           }

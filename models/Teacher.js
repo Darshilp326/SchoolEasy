@@ -14,7 +14,7 @@ const teacherSchema = new mongoose.Schema({
     type: String,
   },
   standard:{
-      type:mongoose.Schema.Types.ObjectId,
+      type:String,
       ref:"Standard"
   },
   subject:{

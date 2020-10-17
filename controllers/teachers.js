@@ -28,11 +28,11 @@ const registerTeacher=async(req,res)=>{
           name,
           email,
           password,
-          mobileNo
+          standard
         });
         const newUser=new User({
           name,
-          userId:teacher.id
+          userId:teacher.id,
         })
         await newUser.save()
         std.teachers.push(teacher.id)
@@ -68,7 +68,7 @@ const loginTeacher = function (req, res, next) {
           if (result) {
             const token = createJwtToken({ id: user.id });
             console.log(user.id)
-            res.status(200).json({ token });
+            res.status(200).json({ token,user });
           } else {
             res.status(401).json({ message: "Authentication failed" });
           }
