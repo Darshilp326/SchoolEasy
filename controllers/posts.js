@@ -8,7 +8,7 @@ const addPost=async(req,res)=>{
     }
     const post=new Post({
     standard:standardId,
-    file:`${req.headers.host}/${req.file.path}`,
+    //file:`${req.headers.host}/${req.file.path}`,
     caption:req.body.caption,
     user:req.user.id
     })

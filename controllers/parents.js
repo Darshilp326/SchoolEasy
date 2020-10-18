@@ -33,7 +33,8 @@ const registerParent=async(req,res)=>{
           email,
           password,
           mobileNo,
-          student:student.id
+          student:student.id,
+          standard:student.standard
         });
         const newUser=new User({
           name,
