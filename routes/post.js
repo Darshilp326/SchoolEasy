@@ -25,6 +25,6 @@ const upload = multer({
     }
 });
 
-router.route('/:standardId/add').post(upload.single('posts'),authController.ensureAuthenticated,postController.addPost);
+router.route('/:standardId/add').post(authController.ensureAuthenticated,postController.addPost);
 router.route('/:standardId/get').get(postController.getAllPost);
 module.exports=router;
