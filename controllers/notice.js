@@ -42,5 +42,6 @@ const getAllNotices=async(req,res)=>{
 }
 
 module.exports={
-    addNotice
+    addNotice,
+    getAllNotices
 }
