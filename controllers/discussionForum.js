@@ -27,8 +27,8 @@ const getDiscussionForum=async(req,res)=>{
    if(!forum){
     return res.status(400).json({message:'Forum not found'})
   }
-  const {questions}=forum
-  res.status(200).json({questions})
+  //const {questions}=forum
+  res.status(200).json({forum})
   }catch(e){
       console.log(e.message)
       res.status(500).json({message:'Internal server error'})
