@@ -12,6 +12,7 @@ const addPost=async(req,res)=>{
     caption:req.body.caption,
     user:req.user.id
     })
+    
     await post.save();
     res.status(200).json({post})
     }catch(e){
