@@ -19,6 +19,8 @@
 - Notice-Board of every standard.
 - A feed for motivational quotes for every standard.
 - A wonderful forum for asking questions and answers in any topics.
+- Event Calendar for mentioning holidays and any important school events.
+- Students,teachers,parents will be able to see all other students,teachers of their own standard.
 
 ### FUTURE PLANS:-
 - Online result and attendance system.
