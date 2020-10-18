@@ -7,6 +7,10 @@ const subjectNoticeSchema=new mongoose.Schema({
     },
     text:[{
         type:String
-    }]
+    }],
+    Date:{
+        type:Date,
+        default:Date.now
+    }
 })
 module.exports=mongoose.model('SubjectNotice',subjectNoticeSchema)

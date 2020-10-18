@@ -13,8 +13,7 @@ const discussionAnswerSchema=new mongoose.Schema({
         ref:'DiscussionQuestion'
     },
     user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'  
+        type:String  
     }
 })
 module.exports=mongoose.model('DiscussionAnswer',discussionAnswerSchema)

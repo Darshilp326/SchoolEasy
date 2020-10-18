@@ -68,7 +68,10 @@ const addQuestionToForum=async(req,res)=>{
 }
 const addAnswerToForum=async(req,res)=>{
  try{
- const userId=req.user.id    
+ const userId=req.user.id 
+ console.log(userId)
+ const user=await User.findOne({userId});
+ console.log(user)   
  const questionId=req.params.id
  if(!questionId){
     return res.status(400).json({message:'Question id not found'})
@@ -79,7 +82,8 @@ if(!question){
 }
 const answer=new DiscussionAnswer({
     answer:req.body.answer,
-    question:questionId
+    question:questionId,
+    user:user.name
 })
 await answer.save()
 question.answers.push(answer.id)
@@ -97,7 +101,7 @@ const getAnswersOfSpecificQuestion=async(req,res)=>{
         if(!questionId){
             return res.status(400).json({message:'Question id not found'})
         }
-        const question=await DiscussionQuestion.findById(questionId).populate("answers")
+        const question=await DiscussionQuestion.findById(questionId).populate('answers')
         if(!question){
             return res.status(400).json({message:'Question not found'})
         }
