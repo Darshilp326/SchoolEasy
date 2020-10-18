@@ -1,4 +1,4 @@
-# SchoolEasy
+# SchoolEasy(Team Name:Night owls!)
 
 ## Setup
 - First simply clone our code and first do npm install.
