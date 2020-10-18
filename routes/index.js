@@ -18,6 +18,6 @@ router.use('/subjects',subjectRoute)
 router.use('/discussions',discussionForumRoute)
 router.use('/materials',materialRoute)
 router.use('/posts',postRoute)
-//router.use('/notice',noticeRoute)
+router.use('/notices',noticeRoute)
 
 module.exports=router

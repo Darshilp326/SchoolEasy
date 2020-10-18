@@ -2,15 +2,13 @@ const mongoose=require('mongoose')
 
 const commonNoticeSchema=new mongoose.Schema({
     teacher:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Teacher'
+        type:String
     },
     text:{
         type:String
     },
-    subject:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Subject'
+    standard:{
+        type:String,
     },
     heading:{
         type:String,
