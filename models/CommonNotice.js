@@ -5,8 +5,15 @@ const commonNoticeSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Teacher'
     },
-    text:[{
+    text:{
         type:String
-    }]
+    },
+    subject:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Subject'
+    },
+    heading:{
+        type:String,
+    }
 })
 module.exports=mongoose.model('CommonNotice',commonNoticeSchema)
