@@ -5,7 +5,7 @@
 - Then simply type npm run dev to run server.
 - Server is active on port 4000.
 
-## This project was made for a hackathon named HackAccelerate of HackerEarth which was organised from October 16th 2020 to 18th October 2020.
+## This project was made for a hackathon named Hackcelerate(72hours hackathon) of HackerEarth which was organised from October 16th 2020 to 18th October 2020.
 
 ## Theme:- LEARNING APP
 
